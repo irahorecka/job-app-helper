@@ -25,28 +25,34 @@ class MainPage(QMainWindow, UiMainWindow):
     def __init__(self, parent=None):
         super(MainPage, self).__init__(parent)
         self.setupUi(self)
-        self.generate_button.clicked.connect(self.make_job_dir)
+        self.generate_button.clicked.connect(self.make_job_app_dir)
+        self.generate_button.clicked.connect(self.touch_text_file)
         self.generate_button.clicked.connect(self.generate_docx)
         self.cancel_button.clicked.connect(self.close)
-        self.full_source_dir_path = os.path.join(BASE_PATH, "resources", BASE_CV)
+        self.full_source_cv_path = os.path.join(BASE_PATH, "resources", BASE_CV)
 
-    def make_job_dir(self):
-        local_dest_dir_path = (
-            f"{self.get_text(self.company_box)} - {self.get_text(self.job_title_box)}"
+    def make_job_app_dir(self):
+        self.full_dest_cv_path = os.path.join(
+            JOB_PATH,
+            f"{self.get_text(self.company_box)} - {self.get_text(self.job_title_box)}",
         )
-        self.full_dest_dir_path = os.path.join(JOB_PATH, local_dest_dir_path)
         try:
-            os.makedirs(self.full_dest_dir_path)
+            print(self.full_dest_cv_path)
+            os.makedirs(self.full_dest_cv_path)
         except FileExistsError:
             print("WHOA something exists!")
+
+    def touch_text_file(self):
+        Path(
+            os.path.join(self.full_dest_cv_path, "supplementary_information.txt")
+        ).touch()
 
     def generate_docx(self):
         cv_title = f"Ira Horecka CV - {self.get_text(self.company_box)}, {self.get_text(self.job_title_box)}.docx"
         print(cv_title)
         copy_template_docx(
-            self.full_source_dir_path, os.path.join(self.full_dest_dir_path, cv_title)
+            self.full_source_cv_path, os.path.join(self.full_dest_cv_path, cv_title)
         )
-        # Path(f'{BASE_PATH}/file.txt').touch()
 
     @staticmethod
     def get_text(item):
