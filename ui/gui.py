@@ -80,7 +80,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Image Optimizer"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Job Application Helper"))
         self.job_title_label.setText(_translate("MainWindow", "Job Title:"))
         self.title.setText(_translate("MainWindow", "Job Application Helper"))
         self.disclaimer_label.setText(

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Image Optimizer</string>
+   <string>Job Application Helper</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLineEdit" name="job_title_box">
