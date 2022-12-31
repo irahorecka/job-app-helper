@@ -6,6 +6,6 @@ Likely to be discontinued due to self-realization that quality of application ou
 <br>
 
 
-![Job App Helper GUI](Documentation/jobAppHelper.png)
+![Job App Helper GUI](docs/jobAppHelper.png)
 
 Simply clone the repository, install requirements via ```pip install -r requirements.txt```, and run ```python main.py```
